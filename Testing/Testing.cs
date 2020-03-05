@@ -24,14 +24,12 @@ namespace Testing
         /// <summary>
         /// The wrong file path
         /// </summary>
-        private readonly string wrongFilePath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusDat.csv";
-
-        ////private readonly string wrongFileType = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csvx";
+        private readonly string wrongFileName = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusDat.csv";
 
         /// <summary>
-        /// The state census analyzer
+        /// The wrong file type
         /// </summary>
-        private StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+        private readonly string wrongFileType = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csvx";
 
         /// <summary>
         /// The Setup
@@ -48,7 +46,8 @@ namespace Testing
         [Test]
         public void GivenStateCensusCSVFile_WhenAnalyze_NumberOfRecordMatches()
         {
-            Assert.AreEqual(this.stateCensusAnalyzer.NumberOfRecords(this.stateCensusDataPath), "30");
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath);
+            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), "30");
         }
 
         /// <summary>
@@ -58,15 +57,21 @@ namespace Testing
         [Test]
         public void GivenStateCensusCSVFileIncorrect_WhenAnalyze_ReturnsCustomException()
         {
-            CustomException ex = Assert.Throws<CustomException>(() => this.stateCensusAnalyzer.NumberOfRecords(this.wrongFilePath));
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileName);
+            CustomException ex = Assert.Throws<CustomException>(() => stateCensusAnalyzer.NumberOfRecords());
             Assert.That(ex.Message, Is.EqualTo("File Not Found!!!"));
         }
 
-        //[Test]
-        //public void GivenStateCensusCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
-        //{
-        //    string actual=stateCensusAnalyzer.NumberOfRecords(this.wrongType);
-        //    Assert.AreEqual("Incorrect File Format!!!", actual);
-        //}
+        /// <summary>
+        /// Given the state census CSV file correct type incorrect when analyze returns custom exception.
+        /// </summary>
+        //// Test Case 1.3
+        [Test]
+        public void GivenStateCensusCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileType);
+            string actual = stateCensusAnalyzer.NumberOfRecords();
+            Assert.AreEqual("Incorrect File Format!!!", actual);
+        }
     }
 }

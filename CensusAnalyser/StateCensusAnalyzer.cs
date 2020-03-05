@@ -16,21 +16,45 @@ namespace CensusAnalyser
     public class StateCensusAnalyzer
     {
         /// <summary>
-        /// Numbers the of records.
+        /// The path
+        /// </summary>
+        private string path;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StateCensusAnalyzer"/> class.
+        /// </summary>
+        public StateCensusAnalyzer()
+        { 
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StateCensusAnalyzer"/> class.
         /// </summary>
         /// <param name="path">The path.</param>
+        public StateCensusAnalyzer(string path)
+        {
+            this.path = path;
+        }
+
+        /// <summary>
+        /// Numbers the of records.
+        /// </summary>
         /// <returns>It returns number of Records</returns>
-        /// <exception cref="CensusAnalyser.CustomException">File Not Found!!!</exception>
-        public string NumberOfRecords(string path)
+        /// <exception cref="CustomException">
+        /// Incorrect File Format!!!
+        /// or
+        /// File Not Found!!!
+        /// </exception>
+        public string NumberOfRecords()
         {
             try
             {
-                /*if (!CheckType(path))
+                if (!this.CheckType())
                 {
-                    throw new CustomException("File Extension Incorrect!!!");
-                }*/
+                    throw new CustomException("Incorrect File Format!!!", CustomException.TypeOfException.INCORRECT_FILE_FORMAT);
+                }
 
-                StreamReader streamReader = new StreamReader(path);
+                StreamReader streamReader = new StreamReader(this.path);
                 string line;
                 int numberOfLines = 0;
                 while ((line = streamReader.ReadLine()) != null)
@@ -44,32 +68,49 @@ namespace CensusAnalyser
             {
                 throw new CustomException("File Not Found!!!", CustomException.TypeOfException.FILE_NOT_FOUND);
             }
-
-            /*catch (CustomException exception)
+            catch (CustomException exception)
             {
                 return exception.Message;
-            }*/
+            }
         }
 
-        /*public bool CheckType(string path)
+        /// <summary>
+        /// Checks the type.
+        /// </summary>
+        /// <returns>It return true if file format is incorrect</returns>
+        public bool CheckType()
         {
-            char[] array = path.ToCharArray();
+            /*char[] array = this.path.ToCharArray();
             int i = 0;
-            bool flag=false;
+            bool flag = false;
             while (i < array.Length && flag != true)
             {
                 if (array[i] == '.')
                 {
                     flag = true;
                 }
+
                 i++;
             }
-            string type = path.Substring(i, array.Length - i);
-            //Console.WriteLine(type);
-            if (type == "csv")
-                return true;
 
+            string type = this.path.Substring(i, array.Length - i);
+            Console.WriteLine(type);
+            if (type == "csv")
+            {
+                return true;
+            }
+
+            return false;*/
+            
+            string[] array = new string[2];
+            array = this.path.Split('.');
+            Console.WriteLine(array[1]);
+            if (array[1] == "csv")
+            {
+                return true;
+            }
+                
             return false;
-        }*/
+        }
     }
 }
