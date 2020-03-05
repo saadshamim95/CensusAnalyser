@@ -83,7 +83,7 @@ namespace CensusAnalyser
         {
             try
             {
-                if (!this.CheckFileFormat())
+                if (Path.GetExtension(this.path) != ".csv")
                 {
                     throw new CustomException("Incorrect File Format!!!", CustomException.TypeOfException.INCORRECT_FILE_FORMAT);
                 }
@@ -123,9 +123,9 @@ namespace CensusAnalyser
         /// Checks the type.
         /// </summary>
         /// <returns>It return true if file format is incorrect</returns>
-        public bool CheckFileFormat()
+        /*public bool CheckFileFormat()
         {
-            /*char[] array = this.path.ToCharArray();
+            *//*char[] array = this.path.ToCharArray();
             int i = 0;
             bool flag = false;
             while (i < array.Length && flag != true)
@@ -145,7 +145,7 @@ namespace CensusAnalyser
                 return true;
             }
 
-            return false;*/
+            return false;*//*
             
             string[] array = new string[2];
             array = this.path.Split('.');
@@ -156,6 +156,6 @@ namespace CensusAnalyser
             }
                 
             return false;
-        }
+        }*/
     }
 }
