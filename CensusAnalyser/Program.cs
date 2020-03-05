@@ -14,8 +14,15 @@ namespace CensusAnalyser
     /// </summary>
     public class Program
     {
-        private static readonly string path = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csv";
-        private static readonly string wrongType = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csvx";
+        /// <summary>
+        /// The path
+        /// </summary>
+        private static readonly string PATH = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csv";
+
+        /// <summary>
+        /// The wrong type
+        /// </summary>
+        private static readonly string WRONGTYPE = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csvx";
 
         /// <summary>
         /// Defines the entry point of the application.
@@ -28,10 +35,10 @@ namespace CensusAnalyser
             Console.WriteLine("************************************************************");
 
             /*StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
-            stateCensusAnalyzer.CheckType(wrongType);*/
+            stateCensusAnalyzer.CheckType(WRONGTYPE);*/
 
             /*CSVStateCensus csvStateCensus = new CSVStateCensus();
-            csvStateCensus.NumberOfRecords(path);*/
+            csvStateCensus.NumberOfRecords(PATH);*/
         }
     }
 }

@@ -71,7 +71,7 @@ namespace CensusAnalyser
         /// <summary>
         /// Numbers the of records.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>It returns number of lines</returns>
         /// <exception cref="CensusAnalyser.CustomException">
         /// Incorrect File Format!!!
         /// or
@@ -100,6 +100,7 @@ namespace CensusAnalyser
                 {
                     throw new CustomException("CSV Header Incorrect !!!", CustomException.TypeOfException.INCORRECT_CSV_HEADER);
                 }
+
                 string line;
                 numberOfLines++;
                 while ((line = streamReader.ReadLine()) != null)

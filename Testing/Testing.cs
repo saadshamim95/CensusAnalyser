@@ -52,7 +52,7 @@ namespace Testing
         public void GivenStateCensusCSVFile_WhenAnalyze_NumberOfRecordMatches()
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath);
-            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), "30");
+            Assert.AreEqual("30", stateCensusAnalyzer.NumberOfRecords());
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Testing
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileName);
             CustomException ex = Assert.Throws<CustomException>(() => stateCensusAnalyzer.NumberOfRecords());
-            Assert.That(ex.Message, Is.EqualTo("File Not Found!!!"));
+            Assert.AreEqual("File Not Found!!!", ex.Message);
         }
 
         /// <summary>
