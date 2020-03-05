@@ -32,6 +32,11 @@ namespace Testing
         private readonly string wrongFileType = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csvx";
 
         /// <summary>
+        /// The CSV header
+        /// </summary>
+        private string csvHeader = "State,Population,AreaInSqKm,DensityPerSqK";
+
+        /// <summary>
         /// The Setup
         /// </summary>
         [SetUp]
@@ -84,6 +89,18 @@ namespace Testing
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, '.');
             string actual = stateCensusAnalyzer.NumberOfRecords();
             Assert.AreEqual("Delimiter Incorrect!!!", actual);
+        }
+
+        /// <summary>
+        /// Given the state census CSV file correct CSV header incorrect when analyze returns custom exception.
+        /// </summary>
+        //// Test Case 1.5
+        [Test]
+        public void GivenStateCensusCSVFileCorrectCSVHeaderIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, this.csvHeader);
+            string actual = stateCensusAnalyzer.NumberOfRecords();
+            Assert.AreEqual("CSV Header Incorrect !!!", actual);
         }
     }
 }

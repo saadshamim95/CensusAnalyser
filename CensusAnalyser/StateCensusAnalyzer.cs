@@ -26,6 +26,11 @@ namespace CensusAnalyser
         private char delimiter = ',';
 
         /// <summary>
+        /// The CSV header
+        /// </summary>
+        private string csvHeader = "State,Population,AreaInSqKm,DensityPerSqKm";
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="StateCensusAnalyzer"/> class.
         /// </summary>
         public StateCensusAnalyzer()
@@ -53,6 +58,17 @@ namespace CensusAnalyser
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="StateCensusAnalyzer"/> class.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="csvHeader">The CSV header.</param>
+        public StateCensusAnalyzer(string path, string csvHeader)
+        {
+            this.path = path;
+            this.csvHeader = csvHeader;
+        }
+
+        /// <summary>
         /// Numbers the of records.
         /// </summary>
         /// <returns></returns>
@@ -74,11 +90,16 @@ namespace CensusAnalyser
 
                 StreamReader streamReader = new StreamReader(this.path);
                 int numberOfLines = 0;
-                if (!streamReader.ReadLine().Contains(this.delimiter))
+                string header;
+                if (!(header = streamReader.ReadLine()).Contains(this.delimiter))
                 {
                     throw new CustomException("Delimiter Incorrect!!!", CustomException.TypeOfException.INCORRECT_DELIMITER);
                 }
 
+                if (header != this.csvHeader)
+                {
+                    throw new CustomException("CSV Header Incorrect !!!", CustomException.TypeOfException.INCORRECT_CSV_HEADER);
+                }
                 string line;
                 numberOfLines++;
                 while ((line = streamReader.ReadLine()) != null)

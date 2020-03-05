@@ -61,7 +61,12 @@ namespace CensusAnalyser
             /// <summary>
             /// The incorrect delimiter
             /// </summary>
-            INCORRECT_DELIMITER
+            INCORRECT_DELIMITER,
+
+            /// <summary>
+            /// The incorrect CSV header
+            /// </summary>
+            INCORRECT_CSV_HEADER
         }
 
         /// <summary>
