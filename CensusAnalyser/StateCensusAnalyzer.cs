@@ -55,9 +55,11 @@ namespace CensusAnalyser
         /// <summary>
         /// Numbers the of records.
         /// </summary>
-        /// <returns>It returns number of Records</returns>
-        /// <exception cref="CustomException">
+        /// <returns></returns>
+        /// <exception cref="CensusAnalyser.CustomException">
         /// Incorrect File Format!!!
+        /// or
+        /// Delimiter Incorrect!!!
         /// or
         /// File Not Found!!!
         /// </exception>
@@ -71,13 +73,14 @@ namespace CensusAnalyser
                 }
 
                 StreamReader streamReader = new StreamReader(this.path);
-                if (this.delimiter != ',')
+                int numberOfLines = 0;
+                if (!streamReader.ReadLine().Contains(this.delimiter))
                 {
                     throw new CustomException("Delimiter Incorrect!!!", CustomException.TypeOfException.INCORRECT_DELIMITER);
                 }
 
                 string line;
-                int numberOfLines = 0;
+                numberOfLines++;
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     numberOfLines++;
