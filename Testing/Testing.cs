@@ -9,6 +9,7 @@ namespace Testing
 {
     using CensusAnalyser;
     using NUnit.Framework;
+    using System.IO;
 
     /// <summary>
     /// Class for Testing
@@ -21,12 +22,16 @@ namespace Testing
         /// </summary>
         private readonly string stateCensusDataPath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csv";
 
+        private readonly string wrongFile = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusDat.csv";
+
+        StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+
         /// <summary>
         /// The Setup
         /// </summary>
         [SetUp]
         public void Setup()
-        {
+        {           
         }
 
         /// <summary>
@@ -36,9 +41,18 @@ namespace Testing
         [Test]
         public void GivenStateCensusCSVFile_WhenAnalyze_NumberOfRecordMatches()
         {
-            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
-            CSVStateCensus csvStateCensus = new CSVStateCensus();
-            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(this.stateCensusDataPath), csvStateCensus.NumberOfRecords(this.stateCensusDataPath));
+            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(this.stateCensusDataPath), "30");
+        }
+
+        /// <summary>
+        /// Given the state census CSV file incorrect when analyze returns custom exception.
+        /// </summary>
+        //// Test Case 1.2
+        [Test]
+        public void GivenStateCensusCSVFileIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            CustomException ex=Assert.Throws<CustomException>(()=>stateCensusAnalyzer.NumberOfRecords(this.wrongFile));
+            Assert.That(ex.Message, Is.EqualTo("File Not Found!!!"));
         }
     }
 }

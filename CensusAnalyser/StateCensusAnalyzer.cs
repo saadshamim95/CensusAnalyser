@@ -19,18 +19,24 @@ namespace CensusAnalyser
         /// Numbers the of records.
         /// </summary>
         /// <returns>It returns number of lines</returns>
-        public int NumberOfRecords(string path)
+        public string NumberOfRecords(string path)
         {
-            StreamReader streamReader = new StreamReader(path);
-            string line;
-            int numberOfLines = 0;
-            while ((line = streamReader.ReadLine()) != null)
+            try
             {
-                numberOfLines++;
-            }
+                StreamReader streamReader = new StreamReader(path);
+                string line;
+                int numberOfLines = 0;
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    numberOfLines++;
+                }
 
-            Console.WriteLine("Number of lines: " + numberOfLines);
-            return numberOfLines;
+                return numberOfLines.ToString();
+            }
+            catch (FileNotFoundException)
+            {
+                throw new CustomException("File Not Found!!!");
+            }
         }
     }
 }

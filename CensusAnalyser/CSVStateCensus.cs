@@ -30,7 +30,7 @@ namespace CensusAnalyser
         /// Numbers the of records.
         /// </summary>
         /// <returns>It returns number of lines</returns>
-        public int NumberOfRecords(string path)
+        public string NumberOfRecords(string path)
         {
             IEnumerable<string> csvArray = this.GetCSVData(path);
             int numberOfLines = 0;
@@ -39,8 +39,8 @@ namespace CensusAnalyser
                 numberOfLines++;
             }
 
-            Console.WriteLine("Number of Lines: " + numberOfLines);
-            return numberOfLines;
+            //Console.WriteLine("Number of Lines: " + numberOfLines);
+            return numberOfLines.ToString();
         }
     }
 }
