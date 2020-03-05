@@ -39,7 +39,6 @@ namespace CensusAnalyser
                 numberOfLines++;
             }
 
-            //Console.WriteLine("Number of Lines: " + numberOfLines);
             return numberOfLines.ToString();
         }
     }

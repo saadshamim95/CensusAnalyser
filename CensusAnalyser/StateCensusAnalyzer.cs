@@ -18,11 +18,18 @@ namespace CensusAnalyser
         /// <summary>
         /// Numbers the of records.
         /// </summary>
-        /// <returns>It returns number of lines</returns>
+        /// <param name="path">The path.</param>
+        /// <returns>It returns number of Records</returns>
+        /// <exception cref="CensusAnalyser.CustomException">File Not Found!!!</exception>
         public string NumberOfRecords(string path)
         {
             try
             {
+                /*if (!CheckType(path))
+                {
+                    throw new CustomException("File Extension Incorrect!!!");
+                }*/
+
                 StreamReader streamReader = new StreamReader(path);
                 string line;
                 int numberOfLines = 0;
@@ -35,8 +42,34 @@ namespace CensusAnalyser
             }
             catch (FileNotFoundException)
             {
-                throw new CustomException("File Not Found!!!");
+                throw new CustomException("File Not Found!!!", CustomException.TypeOfException.FILE_NOT_FOUND);
             }
+
+            /*catch (CustomException exception)
+            {
+                return exception.Message;
+            }*/
         }
+
+        /*public bool CheckType(string path)
+        {
+            char[] array = path.ToCharArray();
+            int i = 0;
+            bool flag=false;
+            while (i < array.Length && flag != true)
+            {
+                if (array[i] == '.')
+                {
+                    flag = true;
+                }
+                i++;
+            }
+            string type = path.Substring(i, array.Length - i);
+            //Console.WriteLine(type);
+            if (type == "csv")
+                return true;
+
+            return false;
+        }*/
     }
 }

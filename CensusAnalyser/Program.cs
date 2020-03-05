@@ -15,6 +15,7 @@ namespace CensusAnalyser
     public class Program
     {
         private static readonly string path = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csv";
+        private static readonly string wrongType = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csvx";
 
         /// <summary>
         /// Defines the entry point of the application.
@@ -26,11 +27,11 @@ namespace CensusAnalyser
             Console.WriteLine("*                 WELCOME TO CENSUS ANALYSER               *");
             Console.WriteLine("************************************************************");
 
-            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
-            stateCensusAnalyzer.NumberOfRecords(path);
+            /*StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+            stateCensusAnalyzer.CheckType(wrongType);*/
 
-            CSVStateCensus csvStateCensus = new CSVStateCensus();
-            csvStateCensus.NumberOfRecords(path);
+            /*CSVStateCensus csvStateCensus = new CSVStateCensus();
+            csvStateCensus.NumberOfRecords(path);*/
         }
     }
 }

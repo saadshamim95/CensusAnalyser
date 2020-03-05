@@ -9,7 +9,6 @@ namespace Testing
 {
     using CensusAnalyser;
     using NUnit.Framework;
-    using System.IO;
 
     /// <summary>
     /// Class for Testing
@@ -22,9 +21,17 @@ namespace Testing
         /// </summary>
         private readonly string stateCensusDataPath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csv";
 
-        private readonly string wrongFile = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusDat.csv";
+        /// <summary>
+        /// The wrong file path
+        /// </summary>
+        private readonly string wrongFilePath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusDat.csv";
 
-        StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+        ////private readonly string wrongFileType = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csvx";
+
+        /// <summary>
+        /// The state census analyzer
+        /// </summary>
+        private StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
 
         /// <summary>
         /// The Setup
@@ -41,7 +48,7 @@ namespace Testing
         [Test]
         public void GivenStateCensusCSVFile_WhenAnalyze_NumberOfRecordMatches()
         {
-            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(this.stateCensusDataPath), "30");
+            Assert.AreEqual(this.stateCensusAnalyzer.NumberOfRecords(this.stateCensusDataPath), "30");
         }
 
         /// <summary>
@@ -51,8 +58,15 @@ namespace Testing
         [Test]
         public void GivenStateCensusCSVFileIncorrect_WhenAnalyze_ReturnsCustomException()
         {
-            CustomException ex=Assert.Throws<CustomException>(()=>stateCensusAnalyzer.NumberOfRecords(this.wrongFile));
+            CustomException ex = Assert.Throws<CustomException>(() => this.stateCensusAnalyzer.NumberOfRecords(this.wrongFilePath));
             Assert.That(ex.Message, Is.EqualTo("File Not Found!!!"));
         }
+
+        //[Test]
+        //public void GivenStateCensusCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
+        //{
+        //    string actual=stateCensusAnalyzer.NumberOfRecords(this.wrongType);
+        //    Assert.AreEqual("Incorrect File Format!!!", actual);
+        //}
     }
 }
