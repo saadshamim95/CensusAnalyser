@@ -21,6 +21,11 @@ namespace CensusAnalyser
         private string path;
 
         /// <summary>
+        /// The delimiter
+        /// </summary>
+        private char delimiter = ',';
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="StateCensusAnalyzer"/> class.
         /// </summary>
         public StateCensusAnalyzer()
@@ -37,6 +42,17 @@ namespace CensusAnalyser
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="StateCensusAnalyzer"/> class.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="delimiter">The delimiter.</param>
+        public StateCensusAnalyzer(string path, char delimiter)
+        {
+            this.path = path;
+            this.delimiter = delimiter;
+        }
+
+        /// <summary>
         /// Numbers the of records.
         /// </summary>
         /// <returns>It returns number of Records</returns>
@@ -49,12 +65,17 @@ namespace CensusAnalyser
         {
             try
             {
-                if (!this.CheckType())
+                if (!this.CheckFileFormat())
                 {
                     throw new CustomException("Incorrect File Format!!!", CustomException.TypeOfException.INCORRECT_FILE_FORMAT);
                 }
 
                 StreamReader streamReader = new StreamReader(this.path);
+                if (this.delimiter != ',')
+                {
+                    throw new CustomException("Delimiter Incorrect!!!", CustomException.TypeOfException.INCORRECT_DELIMITER);
+                }
+
                 string line;
                 int numberOfLines = 0;
                 while ((line = streamReader.ReadLine()) != null)
@@ -78,7 +99,7 @@ namespace CensusAnalyser
         /// Checks the type.
         /// </summary>
         /// <returns>It return true if file format is incorrect</returns>
-        public bool CheckType()
+        public bool CheckFileFormat()
         {
             /*char[] array = this.path.ToCharArray();
             int i = 0;

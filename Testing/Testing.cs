@@ -73,5 +73,17 @@ namespace Testing
             string actual = stateCensusAnalyzer.NumberOfRecords();
             Assert.AreEqual("Incorrect File Format!!!", actual);
         }
+
+        /// <summary>
+        /// Given the state census CSV file correct delimiter incorrect when analyze returns custom exception.
+        /// </summary>
+        //// Test Case 1.4
+        [Test]
+        public void GivenStateCensusCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, '.');
+            string actual = stateCensusAnalyzer.NumberOfRecords();
+            Assert.AreEqual("Delimiter Incorrect!!!", actual);
+        }
     }
 }
