@@ -52,7 +52,8 @@ namespace Testing
         public void GivenStateCensusCSVFile_WhenAnalyze_NumberOfRecordMatches()
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath);
-            Assert.AreEqual("30", stateCensusAnalyzer.NumberOfRecords());
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath);
+            Assert.AreEqual(csvStateCensus.NumberOfRecords(), stateCensusAnalyzer.NumberOfRecords());
         }
 
         /// <summary>

@@ -17,28 +17,40 @@ namespace CensusAnalyser
     public class CSVStateCensus
     {
         /// <summary>
-        /// Gets the CSV data.
+        /// The path
         /// </summary>
-        /// <returns>returns CSV Data</returns>
-        public IEnumerable<string> GetCSVData(string path)
+        private string path;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
+        /// </summary>
+        public CSVStateCensus()
+        { 
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        public CSVStateCensus(string path)
         {
-            string[] csvData = File.ReadAllLines(path);
-            return csvData;
+            this.path = path;
         }
 
         /// <summary>
         /// Numbers the of records.
         /// </summary>
         /// <returns>It returns number of lines</returns>
-        public string NumberOfRecords(string path)
+        public string NumberOfRecords()
         {
-            IEnumerable<string> csvArray = this.GetCSVData(path);
+            IEnumerable<string> csvArray = File.ReadAllLines(this.path);
             int numberOfLines = 0;
             foreach (var item in csvArray)
             {
                 numberOfLines++;
             }
 
+            Console.WriteLine("Number of Lines: " + numberOfLines);
             return numberOfLines.ToString();
         }
     }
