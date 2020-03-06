@@ -45,6 +45,11 @@ namespace CensusAnalyser
         {
             try
             {
+                if (Path.GetExtension(this.path) != ".csv")
+                {
+                    throw new CustomException("Incorrect File Format!!!", CustomException.TypeOfException.INCORRECT_FILE_FORMAT);
+                }
+
                 IEnumerable<string> csvArray = File.ReadAllLines(this.path);
                 int numberOfLines = 0;
                 foreach (var item in csvArray)
@@ -58,6 +63,10 @@ namespace CensusAnalyser
             catch (FileNotFoundException)
             {
                 throw new CustomException("File Not Found!!!", CustomException.TypeOfException.FILE_NOT_FOUND);
+            }
+            catch (CustomException exception)
+            {
+                return exception.Message;
             }
         }
     }

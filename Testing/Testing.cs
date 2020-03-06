@@ -80,8 +80,9 @@ namespace Testing
         public void GivenStateCensusCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileType);
-            string actual = stateCensusAnalyzer.NumberOfRecords();
-            Assert.AreEqual("Incorrect File Format!!!", actual);
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileType);
+            Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords() + " CSVStateCensus: " + csvStateCensus.NumberOfRecords());
+            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
         }
 
         /// <summary>
