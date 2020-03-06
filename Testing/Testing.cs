@@ -68,7 +68,8 @@ namespace Testing
             CustomException ex1 = Assert.Throws<CustomException>(() => stateCensusAnalyzer.NumberOfRecords());
             CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileName);
             CustomException ex2 = Assert.Throws<CustomException>(() => csvStateCensus.NumberOfRecords());
-            Console.WriteLine("Ex1: " + ex1.Message + " Ex2: " + ex2.Message);
+            Console.WriteLine("Ex1: " + ex1.Message);
+            Console.WriteLine("Ex2: " + ex2.Message);
             Assert.AreEqual(ex1.Message, ex2.Message);
         }
 
@@ -81,7 +82,8 @@ namespace Testing
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileType);
             CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileType);
-            Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords() + " CSVStateCensus: " + csvStateCensus.NumberOfRecords());
+            Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
+            Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
             Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
         }
 
@@ -93,8 +95,10 @@ namespace Testing
         public void GivenStateCensusCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, '.');
-            string actual = stateCensusAnalyzer.NumberOfRecords();
-            Assert.AreEqual("Delimiter Incorrect!!!", actual);
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, '.');
+            Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
+            Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
+            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
         }
 
         /// <summary>
