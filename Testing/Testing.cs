@@ -9,6 +9,7 @@ namespace Testing
 {
     using CensusAnalyser;
     using NUnit.Framework;
+    using System;
 
     /// <summary>
     /// Class for Testing
@@ -64,8 +65,11 @@ namespace Testing
         public void GivenStateCensusCSVFileIncorrect_WhenAnalyze_ReturnsCustomException()
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileName);
-            CustomException ex = Assert.Throws<CustomException>(() => stateCensusAnalyzer.NumberOfRecords());
-            Assert.AreEqual("File Not Found!!!", ex.Message);
+            CustomException ex1 = Assert.Throws<CustomException>(() => stateCensusAnalyzer.NumberOfRecords());
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileName);
+            CustomException ex2 = Assert.Throws<CustomException>(() => csvStateCensus.NumberOfRecords());
+            Console.WriteLine("Ex1: " + ex1.Message + " Ex2: " + ex2.Message);
+            Assert.AreEqual(ex1.Message, ex2.Message);
         }
 
         /// <summary>
