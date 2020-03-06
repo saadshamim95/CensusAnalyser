@@ -109,8 +109,10 @@ namespace Testing
         public void GivenStateCensusCSVFileCorrectCSVHeaderIncorrect_WhenAnalyze_ReturnsCustomException()
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, this.csvHeader);
-            string actual = stateCensusAnalyzer.NumberOfRecords();
-            Assert.AreEqual("CSV Header Incorrect !!!", actual);
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, this.csvHeader);
+            Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
+            Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
+            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
         }
     }
 }
