@@ -48,6 +48,11 @@ namespace Testing
         private readonly string wrongStateCodeFileName = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCod.csv";
 
         /// <summary>
+        /// The wrong state code file type
+        /// </summary>
+        private readonly string wrongStateCodeFileType = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCode.csvx";
+
+        /// <summary>
         /// The Setup
         /// </summary>
         [SetUp]
@@ -146,6 +151,19 @@ namespace Testing
             CustomException exception = Assert.Throws<CustomException>(() => csvStates.NumberOfRecords());
             Console.WriteLine("Exception: " + exception.Message);
             Assert.AreEqual("File Not Found!!!", exception.Message);
+        }
+
+        /// <summary>
+        /// Given the state code CSV file correct type incorrect when analyze returns custom exception.
+        /// </summary>
+        //// Test Case 2.3
+        [Test]
+        public void GivenStateCodeCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            CSVStates csvStates = new CSVStates(this.wrongStateCodeFileType);
+            Console.WriteLine("CSVStates: " + csvStates.NumberOfRecords());
+            string actual = csvStates.NumberOfRecords();
+            Assert.AreEqual("Incorrect File Format!!!", actual);
         }
     }
 }
