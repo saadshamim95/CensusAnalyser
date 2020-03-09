@@ -72,19 +72,18 @@ namespace Testing
             Assert.AreEqual("File Not Found!!!", exception.Message);
         }
 
-        ///// <summary>
-        ///// Given the state census CSV file correct type incorrect when analyze returns custom exception.
-        ///// </summary>
-        ////// Test Case 1.3
-        //[Test]
-        //public void GivenStateCensusCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
-        //{
-        //    StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileType);
-        //    CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileType);
-        //    Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
-        //    Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
-        //    Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
-        //}
+        /// <summary>
+        /// Given the state census CSV file correct type incorrect when analyze returns custom exception.
+        /// </summary>
+        //// Test Case 1.3
+        [Test]
+        public void GivenStateCensusCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileType);
+            Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
+            string actual = csvStateCensus.NumberOfRecords();
+            Assert.AreEqual("Incorrect File Format!!!", actual);
+        }
 
         ///// <summary>
         ///// Given the state census CSV file correct delimiter incorrect when analyze returns custom exception.
