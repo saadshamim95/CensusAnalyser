@@ -85,19 +85,18 @@ namespace Testing
             Assert.AreEqual("Incorrect File Format!!!", actual);
         }
 
-        ///// <summary>
-        ///// Given the state census CSV file correct delimiter incorrect when analyze returns custom exception.
-        ///// </summary>
-        ////// Test Case 1.4
-        //[Test]
-        //public void GivenStateCensusCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
-        //{
-        //    StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, '.');
-        //    CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, '.');
-        //    Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
-        //    Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
-        //    Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
-        //}
+        /// <summary>
+        /// Given the state census CSV file correct delimiter incorrect when analyze returns custom exception.
+        /// </summary>
+        //// Test Case 1.4
+        [Test]
+        public void GivenStateCensusCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, '.');
+            Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
+            string actual = csvStateCensus.NumberOfRecords();
+            Assert.AreEqual("Delimiter Incorrect!!!", actual);
+        }
 
         ///// <summary>
         ///// Given the state census CSV file correct CSV header incorrect when analyze returns custom exception.
