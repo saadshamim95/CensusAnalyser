@@ -37,6 +37,8 @@ namespace Testing
         /// </summary>
         private string csvHeader = "State,Population,AreaInSqKm,DensityPerSqK";
 
+        private string stateCodePath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCode.csv";
+
         /// <summary>
         /// The Setup
         /// </summary>
@@ -109,6 +111,21 @@ namespace Testing
             Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
             string actual = csvStateCensus.NumberOfRecords();
             Assert.AreEqual("CSV Header Incorrect !!!", csvStateCensus.NumberOfRecords());
+        }
+
+
+        /// <summary>
+        /// Given the state code CSV file when analyze number of record matches.
+        /// </summary>
+        //// Test Case 2.1
+        [Test]
+        public void GivenStateCodeCSVFile_WhenAnalyze_NumberOfRecordMatches()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCodePath);
+            CSVStates csvStates = new CSVStates(this.stateCodePath);
+            string expected = csvStates.NumberOfRecords();
+            string actual = stateCensusAnalyzer.NumberOfRecords();
+            Assert.AreEqual(expected, actual);
         }
     }
 }
