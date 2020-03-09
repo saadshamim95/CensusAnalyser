@@ -26,6 +26,8 @@ namespace CensusAnalyser
         /// </summary>
         private char delimiter = ',';
 
+        private string csvHeader = "SrNo,State,Name,TIN,StateCode";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CSVStates"/> class.
         /// </summary>
@@ -54,6 +56,17 @@ namespace CensusAnalyser
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="CSVStates"/> class.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="csvHeader">The CSV header.</param>
+        public CSVStates(string path, string csvHeader)
+        {
+            this.path = path;
+            this.csvHeader = csvHeader;
+        }
+
+        /// <summary>
         /// Numbers the of records.
         /// </summary>
         /// <returns>It returns number of lines</returns>
@@ -71,6 +84,11 @@ namespace CensusAnalyser
                 if (!header.Contains(this.delimiter))
                 {
                     throw new CustomException("Delimiter Incorrect!!!", CustomException.TypeOfException.INCORRECT_DELIMITER);
+                }
+
+                if (header != this.csvHeader)
+                {
+                    throw new CustomException("CSV Header Incorrect !!!", CustomException.TypeOfException.INCORRECT_CSV_HEADER);
                 }
 
                 IEnumerable<string> csvArray = records;

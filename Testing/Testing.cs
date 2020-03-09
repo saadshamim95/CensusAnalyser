@@ -40,7 +40,7 @@ namespace Testing
         /// <summary>
         /// The CSV state census header
         /// </summary>
-        private readonly string csvStateCensusHeader = "State,Population,AreaInSqKm,DensityPerSqK";
+        private readonly string wrongCSVStateCensusHeader = "State,Population,AreaInSqKm,DensityPerSqK";
 
         /// <summary>
         /// The state code path
@@ -56,6 +56,11 @@ namespace Testing
         /// The wrong state code file type
         /// </summary>
         private readonly string wrongStateCodeFileType = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCode.csvx";
+
+        /// <summary>
+        /// The CSV state code header
+        /// </summary>
+        private readonly string wrongCSVStateCodeHeader = "SrNo,State,Name,TIN,StateCod";
 
         /// <summary>
         /// The Setup
@@ -125,7 +130,7 @@ namespace Testing
         [Test]
         public void GivenStateCensusCSVFileCorrectCSVHeaderIncorrect_WhenAnalyze_ReturnsCustomException()
         {
-            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, this.csvStateCensusHeader);
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, this.wrongCSVStateCensusHeader);
             Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
             string actual = csvStateCensus.NumberOfRecords();
             Assert.AreEqual("CSV Header Incorrect !!!", csvStateCensus.NumberOfRecords());
@@ -182,6 +187,15 @@ namespace Testing
             Console.WriteLine("CSVStates: " + csvStates.NumberOfRecords());
             string actual = csvStates.NumberOfRecords();
             Assert.AreEqual("Delimiter Incorrect!!!", actual);
+        }
+
+        [Test]
+        public void GivenStateCodeCSVFileCorrectCSVHeaderIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            CSVStates csvStates = new CSVStates(this.stateCodePath, this.wrongCSVStateCodeHeader);
+            Console.WriteLine("CSVStates: " + csvStates.NumberOfRecords());
+            string actual = csvStates.NumberOfRecords();
+            Assert.AreEqual("CSV Header Incorrect !!!", csvStates.NumberOfRecords());
         }
     }
 }
