@@ -33,6 +33,11 @@ namespace Testing
         private readonly string wrongStateCensusFileType = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csvx";
 
         /// <summary>
+        /// The wrong delimiter
+        /// </summary>
+        private readonly char wrongDelimiter = '.';
+
+        /// <summary>
         /// The CSV state census header
         /// </summary>
         private readonly string csvStateCensusHeader = "State,Population,AreaInSqKm,DensityPerSqK";
@@ -107,7 +112,7 @@ namespace Testing
         [Test]
         public void GivenStateCensusCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
         {
-            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, '.');
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, this.wrongDelimiter);
             Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
             string actual = csvStateCensus.NumberOfRecords();
             Assert.AreEqual("Delimiter Incorrect!!!", actual);
@@ -164,6 +169,19 @@ namespace Testing
             Console.WriteLine("CSVStates: " + csvStates.NumberOfRecords());
             string actual = csvStates.NumberOfRecords();
             Assert.AreEqual("Incorrect File Format!!!", actual);
+        }
+
+        /// <summary>
+        /// Given the state code CSV file correct delimiter incorrect when analyze returns custom exception.
+        /// </summary>
+        //// Test Case 2.4
+        [Test]
+        public void GivenStateCodeCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            CSVStates csvStates = new CSVStates(this.stateCodePath, this.wrongDelimiter);
+            Console.WriteLine("CSVStates: " + csvStates.NumberOfRecords());
+            string actual = csvStates.NumberOfRecords();
+            Assert.AreEqual("Delimiter Incorrect!!!", actual);
         }
     }
 }
