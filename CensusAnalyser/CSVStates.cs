@@ -43,16 +43,23 @@ namespace CensusAnalyser
         /// <returns>It returns number of lines</returns>
         public string NumberOfRecords()
         {
-            string[] records = File.ReadAllLines(this.path);
-            IEnumerable<string> csvArray = records;
-            int numberOfLines = 0;
-            foreach (var item in csvArray)
+            try
             {
-                numberOfLines++;
-            }
+                string[] records = File.ReadAllLines(this.path);
+                IEnumerable<string> csvArray = records;
+                int numberOfLines = 0;
+                foreach (var item in csvArray)
+                {
+                    numberOfLines++;
+                }
 
-            Console.WriteLine("Number of Lines: " + numberOfLines);
-            return numberOfLines.ToString();
+                Console.WriteLine("Number of Lines: " + numberOfLines);
+                return numberOfLines.ToString();
+            }
+            catch (FileNotFoundException)
+            {
+                throw new CustomException("File Not Found!!!", CustomException.TypeOfException.FILE_NOT_FOUND);
+            }
         }
     }
 }
