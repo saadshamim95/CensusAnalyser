@@ -75,12 +75,12 @@ namespace CensusAnalyser
         /// <returns>It returns number of lines</returns>
         public string NumberOfRecords()
         {
-            //try
-            //{
-            //    if (Path.GetExtension(this.path) != ".csv")
-            //    {
-            //        throw new CustomException("Incorrect File Format!!!", CustomException.TypeOfException.INCORRECT_FILE_FORMAT);
-            //    }
+            try
+            {
+                //if (Path.GetExtension(this.path) != ".csv")
+                //{
+                //    throw new CustomException("Incorrect File Format!!!", CustomException.TypeOfException.INCORRECT_FILE_FORMAT);
+                //}
 
                 string[] records = File.ReadAllLines(this.path);
                 //string header = records[0];
@@ -103,11 +103,11 @@ namespace CensusAnalyser
 
                 Console.WriteLine("Number of Lines: " + numberOfLines);
                 return numberOfLines.ToString();
-            //}
-            //catch (FileNotFoundException)
-            //{
-            //    throw new CustomException("File Not Found!!!", CustomException.TypeOfException.FILE_NOT_FOUND);
-            //}
+            }
+            catch (FileNotFoundException)
+            {
+                throw new CustomException("File Not Found!!!", CustomException.TypeOfException.FILE_NOT_FOUND);
+            }
             //catch (CustomException exception)
             //{
             //    return exception.Message;

@@ -54,24 +54,23 @@ namespace Testing
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath);
             CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath);
-            Assert.AreEqual(csvStateCensus.NumberOfRecords(), stateCensusAnalyzer.NumberOfRecords());
+            string expected = csvStateCensus.NumberOfRecords();
+            string actual = stateCensusAnalyzer.NumberOfRecords();
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
         /// Given the state census CSV file incorrect when analyze returns custom exception.
         /// </summary>
         //// Test Case 1.2
-        //[Test]
-        //public void GivenStateCensusCSVFileIncorrect_WhenAnalyze_ReturnsCustomException()
-        //{
-        //    StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileName);
-        //    CustomException ex1 = Assert.Throws<CustomException>(() => stateCensusAnalyzer.NumberOfRecords());
-        //    CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileName);
-        //    CustomException ex2 = Assert.Throws<CustomException>(() => csvStateCensus.NumberOfRecords());
-        //    Console.WriteLine("Ex1: " + ex1.Message);
-        //    Console.WriteLine("Ex2: " + ex2.Message);
-        //    Assert.AreEqual(ex1.Message, ex2.Message);
-        //}
+        [Test]
+        public void GivenStateCensusCSVFileIncorrect_WhenAnalyze_ReturnsCustomException()
+        {
+            CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileName);
+            CustomException exception = Assert.Throws<CustomException>(() => csvStateCensus.NumberOfRecords());
+            Console.WriteLine("Exception: " + exception.Message);
+            Assert.AreEqual("File Not Found!!!", exception.Message);
+        }
 
         ///// <summary>
         ///// Given the state census CSV file correct type incorrect when analyze returns custom exception.
