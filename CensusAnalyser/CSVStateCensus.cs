@@ -24,18 +24,18 @@ namespace CensusAnalyser
         /// <summary>
         /// The delimiter
         /// </summary>
-        private char delimiter = ',';
+        //private char delimiter = ',';
 
         /// <summary>
         /// The CSV header
         /// </summary>
-        private string csvHeader = "State,Population,AreaInSqKm,DensityPerSqKm";
+        //private string csvHeader = "State,Population,AreaInSqKm,DensityPerSqKm";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
         /// </summary>
         public CSVStateCensus()
-        { 
+        {
         }
 
         /// <summary>
@@ -52,22 +52,22 @@ namespace CensusAnalyser
         /// </summary>
         /// <param name="path">The path.</param>
         /// <param name="delimiter">The delimiter.</param>
-        public CSVStateCensus(string path, char delimiter)
-        {
-            this.path = path;
-            this.delimiter = delimiter;
-        }
+        //public CSVStateCensus(string path, char delimiter)
+        //{
+        //    this.path = path;
+        //    this.delimiter = delimiter;
+        //}
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="csvHeader">The CSV header.</param>
-        public CSVStateCensus(string path, string csvHeader)
-        {
-            this.path = path;
-            this.csvHeader = csvHeader;
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
+        ///// </summary>
+        ///// <param name="path">The path.</param>
+        ///// <param name="csvHeader">The CSV header.</param>
+        //public CSVStateCensus(string path, string csvHeader)
+        //{
+        //    this.path = path;
+        //    this.csvHeader = csvHeader;
+        //}
 
         /// <summary>
         /// Numbers the of records.
@@ -75,24 +75,24 @@ namespace CensusAnalyser
         /// <returns>It returns number of lines</returns>
         public string NumberOfRecords()
         {
-            try
-            {
-                if (Path.GetExtension(this.path) != ".csv")
-                {
-                    throw new CustomException("Incorrect File Format!!!", CustomException.TypeOfException.INCORRECT_FILE_FORMAT);
-                }
+            //try
+            //{
+            //    if (Path.GetExtension(this.path) != ".csv")
+            //    {
+            //        throw new CustomException("Incorrect File Format!!!", CustomException.TypeOfException.INCORRECT_FILE_FORMAT);
+            //    }
 
                 string[] records = File.ReadAllLines(this.path);
-                string header=records[0];
-                if(!header.Contains(this.delimiter))
-                {
-                    throw new CustomException("Delimiter Incorrect!!!", CustomException.TypeOfException.INCORRECT_DELIMITER);
-                }
+                //string header = records[0];
+                //if (!header.Contains(this.delimiter))
+                //{
+                //    throw new CustomException("Delimiter Incorrect!!!", CustomException.TypeOfException.INCORRECT_DELIMITER);
+                //}
 
-                if (header != this.csvHeader)
-                {
-                    throw new CustomException("CSV Header Incorrect !!!", CustomException.TypeOfException.INCORRECT_CSV_HEADER);
-                }
+                //if (header != this.csvHeader)
+                //{
+                //    throw new CustomException("CSV Header Incorrect !!!", CustomException.TypeOfException.INCORRECT_CSV_HEADER);
+                //}
 
                 IEnumerable<string> csvArray = records;
                 int numberOfLines = 0;
@@ -103,15 +103,15 @@ namespace CensusAnalyser
 
                 Console.WriteLine("Number of Lines: " + numberOfLines);
                 return numberOfLines.ToString();
-            }
-            catch (FileNotFoundException)
-            {
-                throw new CustomException("File Not Found!!!", CustomException.TypeOfException.FILE_NOT_FOUND);
-            }
-            catch (CustomException exception)
-            {
-                return exception.Message;
-            }
+            //}
+            //catch (FileNotFoundException)
+            //{
+            //    throw new CustomException("File Not Found!!!", CustomException.TypeOfException.FILE_NOT_FOUND);
+            //}
+            //catch (CustomException exception)
+            //{
+            //    return exception.Message;
+            //}
         }
     }
 }

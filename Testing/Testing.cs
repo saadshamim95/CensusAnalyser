@@ -61,58 +61,58 @@ namespace Testing
         /// Given the state census CSV file incorrect when analyze returns custom exception.
         /// </summary>
         //// Test Case 1.2
-        [Test]
-        public void GivenStateCensusCSVFileIncorrect_WhenAnalyze_ReturnsCustomException()
-        {
-            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileName);
-            CustomException ex1 = Assert.Throws<CustomException>(() => stateCensusAnalyzer.NumberOfRecords());
-            CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileName);
-            CustomException ex2 = Assert.Throws<CustomException>(() => csvStateCensus.NumberOfRecords());
-            Console.WriteLine("Ex1: " + ex1.Message);
-            Console.WriteLine("Ex2: " + ex2.Message);
-            Assert.AreEqual(ex1.Message, ex2.Message);
-        }
+        //[Test]
+        //public void GivenStateCensusCSVFileIncorrect_WhenAnalyze_ReturnsCustomException()
+        //{
+        //    StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileName);
+        //    CustomException ex1 = Assert.Throws<CustomException>(() => stateCensusAnalyzer.NumberOfRecords());
+        //    CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileName);
+        //    CustomException ex2 = Assert.Throws<CustomException>(() => csvStateCensus.NumberOfRecords());
+        //    Console.WriteLine("Ex1: " + ex1.Message);
+        //    Console.WriteLine("Ex2: " + ex2.Message);
+        //    Assert.AreEqual(ex1.Message, ex2.Message);
+        //}
 
-        /// <summary>
-        /// Given the state census CSV file correct type incorrect when analyze returns custom exception.
-        /// </summary>
-        //// Test Case 1.3
-        [Test]
-        public void GivenStateCensusCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
-        {
-            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileType);
-            CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileType);
-            Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
-            Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
-            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
-        }
+        ///// <summary>
+        ///// Given the state census CSV file correct type incorrect when analyze returns custom exception.
+        ///// </summary>
+        ////// Test Case 1.3
+        //[Test]
+        //public void GivenStateCensusCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
+        //{
+        //    StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.wrongFileType);
+        //    CSVStateCensus csvStateCensus = new CSVStateCensus(this.wrongFileType);
+        //    Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
+        //    Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
+        //    Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
+        //}
 
-        /// <summary>
-        /// Given the state census CSV file correct delimiter incorrect when analyze returns custom exception.
-        /// </summary>
-        //// Test Case 1.4
-        [Test]
-        public void GivenStateCensusCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
-        {
-            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, '.');
-            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, '.');
-            Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
-            Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
-            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
-        }
+        ///// <summary>
+        ///// Given the state census CSV file correct delimiter incorrect when analyze returns custom exception.
+        ///// </summary>
+        ////// Test Case 1.4
+        //[Test]
+        //public void GivenStateCensusCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
+        //{
+        //    StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, '.');
+        //    CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, '.');
+        //    Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
+        //    Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
+        //    Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
+        //}
 
-        /// <summary>
-        /// Given the state census CSV file correct CSV header incorrect when analyze returns custom exception.
-        /// </summary>
-        //// Test Case 1.5
-        [Test]
-        public void GivenStateCensusCSVFileCorrectCSVHeaderIncorrect_WhenAnalyze_ReturnsCustomException()
-        {
-            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, this.csvHeader);
-            CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, this.csvHeader);
-            Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
-            Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
-            Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
-        }
+        ///// <summary>
+        ///// Given the state census CSV file correct CSV header incorrect when analyze returns custom exception.
+        ///// </summary>
+        ////// Test Case 1.5
+        //[Test]
+        //public void GivenStateCensusCSVFileCorrectCSVHeaderIncorrect_WhenAnalyze_ReturnsCustomException()
+        //{
+        //    StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCensusDataPath, this.csvHeader);
+        //    CSVStateCensus csvStateCensus = new CSVStateCensus(this.stateCensusDataPath, this.csvHeader);
+        //    Console.WriteLine("StateCensusAnalyzer: " + stateCensusAnalyzer.NumberOfRecords());
+        //    Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
+        //    Assert.AreEqual(stateCensusAnalyzer.NumberOfRecords(), csvStateCensus.NumberOfRecords());
+        //}
     }
 }
