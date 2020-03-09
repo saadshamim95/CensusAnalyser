@@ -29,7 +29,7 @@ namespace CensusAnalyser
         /// <summary>
         /// The CSV header
         /// </summary>
-        //private string csvHeader = "State,Population,AreaInSqKm,DensityPerSqKm";
+        private string csvHeader = "State,Population,AreaInSqKm,DensityPerSqKm";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
@@ -58,16 +58,16 @@ namespace CensusAnalyser
             this.delimiter = delimiter;
         }
 
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
-        ///// </summary>
-        ///// <param name="path">The path.</param>
-        ///// <param name="csvHeader">The CSV header.</param>
-        //public CSVStateCensus(string path, string csvHeader)
-        //{
-        //    this.path = path;
-        //    this.csvHeader = csvHeader;
-        //}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="csvHeader">The CSV header.</param>
+        public CSVStateCensus(string path, string csvHeader)
+        {
+            this.path = path;
+            this.csvHeader = csvHeader;
+        }
 
         /// <summary>
         /// Numbers the of records.
@@ -89,10 +89,10 @@ namespace CensusAnalyser
                     throw new CustomException("Delimiter Incorrect!!!", CustomException.TypeOfException.INCORRECT_DELIMITER);
                 }
 
-                //if (header != this.csvHeader)
-                //{
-                //    throw new CustomException("CSV Header Incorrect !!!", CustomException.TypeOfException.INCORRECT_CSV_HEADER);
-                //}
+                if (header != this.csvHeader)
+                {
+                    throw new CustomException("CSV Header Incorrect !!!", CustomException.TypeOfException.INCORRECT_CSV_HEADER);
+                }
 
                 IEnumerable<string> csvArray = records;
                 int numberOfLines = 0;
