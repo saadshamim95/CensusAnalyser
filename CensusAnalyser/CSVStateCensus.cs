@@ -70,6 +70,12 @@ namespace CensusAnalyser
         }
 
         /// <summary>
+        /// GetCSVData delegate
+        /// </summary>
+        /// <returns>It returns string</returns>
+        public delegate string GetCSVData();
+
+        /// <summary>
         /// Numbers the of records.
         /// </summary>
         /// <returns>It returns number of lines</returns>

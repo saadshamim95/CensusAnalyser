@@ -69,11 +69,11 @@
     </timestamps>
     <violations />
   </sourcecode>
-  <sourcecode name="CSVStateCensus.cs" parser="StyleCop.CSharp.CsParser">
+  <sourcecode name="CSVStates.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2020-01-09 17:35:01.625</styleCop>
       <settingsFile>2020-01-09 17:35:01.585</settingsFile>
-      <sourceFile>2020-03-09 10:58:59.385</sourceFile>
+      <sourceFile>2020-03-09 12:04:13.421</sourceFile>
       <parser>2020-01-09 17:35:01.625</parser>
       <StyleCop.CSharp.DocumentationRules>2020-01-09 17:35:01.625</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-176465969</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -96,11 +96,11 @@
     <configuration>
     </configuration>
   </project>
-  <sourcecode name="CSVStates.cs" parser="StyleCop.CSharp.CsParser">
+  <sourcecode name="CSVStateCensus.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2020-01-09 17:35:01.625</styleCop>
       <settingsFile>2020-01-09 17:35:01.585</settingsFile>
-      <sourceFile>2020-03-09 12:04:13.421</sourceFile>
+      <sourceFile>2020-03-11 12:06:01.995</sourceFile>
       <parser>2020-01-09 17:35:01.625</parser>
       <StyleCop.CSharp.DocumentationRules>2020-01-09 17:35:01.625</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-176465969</StyleCop.CSharp.DocumentationRules.FilesHashCode>
