@@ -94,6 +94,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "ChoETL.JSON": {
+              "target": "Package",
+              "version": "[1.1.0.5, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.4.0, )"

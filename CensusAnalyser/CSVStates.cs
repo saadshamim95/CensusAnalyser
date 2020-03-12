@@ -7,10 +7,6 @@
 
 namespace CensusAnalyser
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-
     /// <summary>
     /// Class for CSVStates
     /// </summary>
@@ -60,41 +56,18 @@ namespace CensusAnalyser
         /// <summary>
         /// Numbers the of records.
         /// </summary>
-        /// <returns>It returns number of lines</returns>
+        /// <returns>It returns number of lines.</returns>
         public string NumberOfRecords()
         {
             try
             {
-                if (Path.GetExtension(this.path) != ".csv")
-                {
-                    throw new CustomException("Incorrect File Format!!!", CustomException.TypeOfException.INCORRECT_FILE_FORMAT);
-                }
+                CSVBuilder csvBuilder = new CSVBuilder(this.path, this.delimiter, this.csvHeader);
+                this.path = csvBuilder.FilePath;
+                this.delimiter = csvBuilder.Delimiter;
+                this.csvHeader = csvBuilder.Header;
 
-                string[] records = File.ReadAllLines(this.path);
-                string header = records[0];
-                if (!header.Contains(this.delimiter))
-                {
-                    throw new CustomException("Delimiter Incorrect!!!", CustomException.TypeOfException.INCORRECT_DELIMITER);
-                }
-
-                if (header != this.csvHeader)
-                {
-                    throw new CustomException("CSV Header Incorrect !!!", CustomException.TypeOfException.INCORRECT_CSV_HEADER);
-                }
-
-                IEnumerable<string> csvArray = records;
-                int numberOfLines = 0;
-                foreach (var item in csvArray)
-                {
-                    numberOfLines++;
-                }
-
-                Console.WriteLine("Number of Lines: " + numberOfLines);
-                return numberOfLines.ToString();
-            }
-            catch (FileNotFoundException)
-            {
-                throw new CustomException("File Not Found!!!", CustomException.TypeOfException.FILE_NOT_FOUND);
+                string[] records = csvBuilder.Records;
+                return records.Length.ToString();
             }
             catch (CustomException exception)
             {

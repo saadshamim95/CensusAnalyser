@@ -112,9 +112,8 @@ namespace Testing
             Factory factory = new ObjectFactory();
             ICSVBuilder csvStateCensus = factory.GetObject("CSVStateCensus", this.wrongStateCensusFileName, this.delimiter, this.csvStateCensusHeader);
             GetCSVData getCSVData = new GetCSVData(csvStateCensus.NumberOfRecords);
-            CustomException exception = Assert.Throws<CustomException>(() => getCSVData.Invoke());
-            Console.WriteLine("Exception: " + exception.Message);
-            Assert.AreEqual("File Not Found!!!", exception.Message);
+            string actual = getCSVData.Invoke();
+            Assert.AreEqual("File Not Found!!!", actual);
         }
 
         /// <summary>
@@ -140,7 +139,7 @@ namespace Testing
         public void GivenStateCensusCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
         {
             Factory factory = new ObjectFactory();
-            ICSVBuilder csvStateCensus = factory.GetObject("CSVStateCensus", this.stateCensusDataPath, this.wrongDelimiter, this. csvStateCensusHeader);
+            ICSVBuilder csvStateCensus = factory.GetObject("CSVStateCensus", this.stateCensusDataPath, this.wrongDelimiter, this.csvStateCensusHeader);
             Console.WriteLine("CSVStateCensus: " + csvStateCensus.NumberOfRecords());
             GetCSVData getCSVData = new GetCSVData(csvStateCensus.NumberOfRecords);
             string actual = getCSVData.Invoke();
@@ -188,9 +187,8 @@ namespace Testing
             Factory factory = new ObjectFactory();
             ICSVBuilder csvStates = factory.GetObject("CSVStates", this.wrongStateCodeFileName, this.delimiter, this.csvStateCodeHeader);
             GetCSVData getCSVData = new GetCSVData(csvStates.NumberOfRecords);
-            CustomException exception = Assert.Throws<CustomException>(() => getCSVData.Invoke());
-            Console.WriteLine("Exception: " + exception.Message);
-            Assert.AreEqual("File Not Found!!!", exception.Message);
+            string actual = getCSVData.Invoke();
+            Assert.AreEqual("File Not Found!!!", actual);
         }
 
         /// <summary>
