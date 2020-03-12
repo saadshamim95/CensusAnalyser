@@ -14,7 +14,7 @@ namespace CensusAnalyser
     /// <summary>
     /// Class CSVStateCensus
     /// </summary>
-    public class CSVStateCensus
+    public class CSVStateCensus : ICSVBuilder
     {
         /// <summary>
         /// The path
@@ -24,27 +24,18 @@ namespace CensusAnalyser
         /// <summary>
         /// The delimiter
         /// </summary>
-        private char delimiter = ',';
+        private char delimiter;
 
         /// <summary>
         /// The CSV header
         /// </summary>
-        private string csvHeader = "State,Population,AreaInSqKm,DensityPerSqKm";
+        private string csvHeader;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
         /// </summary>
         public CSVStateCensus()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        public CSVStateCensus(string path)
-        {
-            this.path = path;
+        { 
         }
 
         /// <summary>
@@ -52,21 +43,12 @@ namespace CensusAnalyser
         /// </summary>
         /// <param name="path">The path.</param>
         /// <param name="delimiter">The delimiter.</param>
-        public CSVStateCensus(string path, char delimiter)
+        /// <param name="header">The header.</param>
+        public CSVStateCensus(string path, char delimiter, string header)
         {
             this.path = path;
             this.delimiter = delimiter;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="csvHeader">The CSV header.</param>
-        public CSVStateCensus(string path, string csvHeader)
-        {
-            this.path = path;
-            this.csvHeader = csvHeader;
+            this.csvHeader = header;
         }
 
         /// <summary>

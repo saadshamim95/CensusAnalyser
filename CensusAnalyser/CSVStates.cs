@@ -14,7 +14,7 @@ namespace CensusAnalyser
     /// <summary>
     /// Class for CSVStates
     /// </summary>
-    public class CSVStates
+    public class CSVStates : ICSVBuilder
     {
         /// <summary>
         /// The path
@@ -24,9 +24,12 @@ namespace CensusAnalyser
         /// <summary>
         /// The delimiter
         /// </summary>
-        private char delimiter = ',';
+        private char delimiter;
 
-        private string csvHeader = "SrNo,State,Name,TIN,StateCode";
+        /// <summary>
+        /// The CSV header
+        /// </summary>
+        private string csvHeader;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CSVStates"/> class.
@@ -39,31 +42,13 @@ namespace CensusAnalyser
         /// Initializes a new instance of the <see cref="CSVStates"/> class.
         /// </summary>
         /// <param name="path">The path.</param>
-        public CSVStates(string path)
-        {
-            this.path = path;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStates"/> class.
-        /// </summary>
-        /// <param name="path">The path.</param>
         /// <param name="delimiter">The delimiter.</param>
-        public CSVStates(string path, char delimiter)
+        /// <param name="header">The header.</param>
+        public CSVStates(string path, char delimiter, string header)
         {
             this.path = path;
             this.delimiter = delimiter;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStates"/> class.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="csvHeader">The CSV header.</param>
-        public CSVStates(string path, string csvHeader)
-        {
-            this.path = path;
-            this.csvHeader = csvHeader;
+            this.csvHeader = header;
         }
 
         /// <summary>
