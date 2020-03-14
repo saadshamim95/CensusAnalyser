@@ -141,9 +141,9 @@ namespace CensusAnalyser
             IEnumerable<string> query =
                 from line in data
                 let x = line.Split(',')
-                orderby x[0]
+                orderby x[3]
                 select line;
-            File.WriteAllLines(@"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\SortedStateCensusData.csv", lines.Take(1).Concat(query.ToArray()));
+            File.WriteAllLines(@"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\SortedStateCode.csv", lines.Take(1).Concat(query.ToArray()));
         }
 
         /// <summary>Checks for state.</summary>
@@ -151,11 +151,11 @@ namespace CensusAnalyser
         /// <param name="position">The position.</param>
         /// <param name="key">The key.</param>
         /// <returns>It returns string.</returns>
-        public string CheckForState(string jsonPath,string position, string key)
+        public string CheckForState(string jsonPath,string position, string key, string array)
         {
             var json = File.ReadAllText(jsonPath);
             var jsonObject = JObject.Parse(json);
-            JArray jsonArray = (JArray)jsonObject["SortedStateCensusData"];
+            JArray jsonArray = (JArray)jsonObject[array];
             if (position == "First")
             {
                 return jsonArray[0][key].ToString();

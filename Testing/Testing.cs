@@ -81,7 +81,12 @@ namespace Testing
         /// <summary>
         /// The JSON state census path
         /// </summary>
-        private readonly string jsonStateCensusPath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\SortedSortedStateCensusData.json";
+        private readonly string jsonStateCensusPath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\SortedStateCensusData.json";
+
+        /// <summary>
+        /// The JSON state code path
+        /// </summary>
+        private readonly string jsonStateCodePath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\SortedStateCode.json";
 
         /// <summary>
         /// The Setup
@@ -249,7 +254,7 @@ namespace Testing
         public void GivenCSVStateCensusAnalyzerCheckStartState_WhenAnalyze_ShouldMatch()
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
-            string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCensusPath, "First", "State");
+            string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCensusPath, "First", "State", "StateCensusData");
             Assert.AreEqual("Andhra Pradesh", actual);
         }
 
@@ -261,8 +266,20 @@ namespace Testing
         public void GivenCSVStateCensusAnalyzerCheckEndState_WhenAnalyze_ShouldMatch()
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
-            string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCensusPath, "Last", "State");
+            string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCensusPath, "Last", "State", "StateCensusData");
             Assert.AreEqual("West Bengal", actual);
+        }
+
+        /// <summary>
+        /// Given the CSV state code check start state when analyze should match.
+        /// </summary>
+        //// Test Case 4.1
+        [Test]
+        public void GivenCSVStateCodeCheckStartState_WhenAnalyze_ShouldMatch()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+            string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCodePath, "First", "StateName", "StateCode");
+            Assert.AreEqual("Andhra Pradesh New", actual);
         }
     }
 }
