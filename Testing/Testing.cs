@@ -252,7 +252,7 @@ namespace Testing
             Assert.AreEqual("Andhra Pradesh", actual);
         }
 
-        /*/// <summary>
+        /// <summary>
         /// Given the CSV state census analyzer check end state when analyze should match.
         /// </summary>
         [Test]
@@ -261,6 +261,6 @@ namespace Testing
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
             string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCensusPath, "Last", "State");
             Assert.AreEqual("West Bengal", actual);
-        }*/
+        }
     }
 }

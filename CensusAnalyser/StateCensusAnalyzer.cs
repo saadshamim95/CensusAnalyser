@@ -98,7 +98,7 @@ namespace CensusAnalyser
             var json = File.ReadAllText(jsonPath);
             var jsonObject = JObject.Parse(json);
             JArray jsonArray = (JArray)jsonObject[fileName];
-            foreach (var item in csvData)
+            foreach (var item in csvData)    
             {
                 if (count != 0)
                 {
