@@ -23,6 +23,10 @@ namespace CensusAnalyser
             Console.WriteLine("************************************************************");
             Console.WriteLine("*                 WELCOME TO CENSUS ANALYSER               *");
             Console.WriteLine("************************************************************");
+
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(@"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csv");
+            stateCensusAnalyzer.SortingCSVFile();
+            stateCensusAnalyzer.ConvertingCSVToJSON(@"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\SortedStateCensusData.csv", "SortedStateCensusData");
         }
     }
 }

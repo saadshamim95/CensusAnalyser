@@ -71,12 +71,17 @@ namespace Testing
         /// <summary>
         /// The CSV state code header
         /// </summary>
-        private readonly string csvStateCodeHeader = "SrNo,State,Name,TIN,StateCode";
+        private readonly string csvStateCodeHeader = "SrNo,StateName,TIN,StateCode";
 
         /// <summary>
         /// The CSV state code header
         /// </summary>
         private readonly string wrongCSVStateCodeHeader = "SrNo,State,Name,TIN,StateCod";
+
+        /// <summary>
+        /// The JSON state census path
+        /// </summary>
+        private readonly string jsonStateCensusPath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\SortedSortedStateCensusData.json";
 
         /// <summary>
         /// The Setup
@@ -235,5 +240,27 @@ namespace Testing
             string actual = getCSVData.Invoke();
             Assert.AreEqual("CSV Header Incorrect !!!", csvStates.NumberOfRecords());
         }
+
+        /// <summary>
+        /// Given the CSV state census analyzer check start state when analyze should match.
+        /// </summary>
+        [Test]
+        public void GivenCSVStateCensusAnalyzerCheckStartState_WhenAnalyze_ShouldMatch()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+            string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCensusPath, "First", "State");
+            Assert.AreEqual("Andhra Pradesh", actual);
+        }
+
+        /*/// <summary>
+        /// Given the CSV state census analyzer check end state when analyze should match.
+        /// </summary>
+        [Test]
+        public void GivenCSVStateCensusAnalyzerCheckEndState_WhenAnalyze_ShouldMatch()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+            string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCensusPath, "Last", "State");
+            Assert.AreEqual("West Bengal", actual);
+        }*/
     }
 }

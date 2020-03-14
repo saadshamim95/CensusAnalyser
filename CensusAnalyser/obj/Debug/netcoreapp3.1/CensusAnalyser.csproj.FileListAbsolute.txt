@@ -9,3 +9,16 @@ C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\obj\De
 C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\obj\Debug\netcoreapp3.1\CensusAnalyser.dll
 C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\obj\Debug\netcoreapp3.1\CensusAnalyser.pdb
 C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\obj\Debug\netcoreapp3.1\CensusAnalyser.csprojAssemblyReference.cache
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\ChoETL.Core.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard2.0\System.Data.SqlClient.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Data.SqlClient.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\obj\Debug\netcoreapp3.1\CensusAnalyser.csproj.CopyComplete
+C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
