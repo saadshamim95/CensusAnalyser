@@ -281,5 +281,17 @@ namespace Testing
             string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCodePath, "First", "StateName", "StateCode");
             Assert.AreEqual("Andhra Pradesh New", actual);
         }
+
+        /// <summary>
+        /// Given the CSV state code check end state when analyze should match.
+        /// </summary>
+        //// Test Case 4.2
+        [Test]
+        public void GivenCSVStateCodeCheckEndState_WhenAnalyze_ShouldMatch()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+            string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCodePath, "Last", "StateName", "StateCode");
+            Assert.AreEqual("West Bengal", actual);
+        }
     }
 }
