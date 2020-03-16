@@ -7,6 +7,9 @@
 
 namespace CensusAnalyser
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Class CSVStateCensus
     /// </summary>
@@ -67,7 +70,34 @@ namespace CensusAnalyser
                 this.csvHeader = csvBuilder.Header;
 
                 string[] records = csvBuilder.Records;
-                return records.Length.ToString();
+
+                Dictionary<int, Dictionary<string, string>> keyValuePairs = new Dictionary<int, Dictionary<string, string>>();
+                string[] headerKey = records[0].Split(',');
+                Dictionary<string, string> map = null;
+                int length = 1;
+                for (int i = 1; i < records.Length; i++)
+                {
+                    string[] value = records[i].Split(',');
+                    map = new Dictionary<string, string>();
+                    for (int j = 0; j < value.Length; j++)
+                    {
+                        map.Add(headerKey[j], value[j]);
+                    }
+
+                    keyValuePairs.Add(length, map);
+                    length++;
+                }
+
+                foreach (var i in keyValuePairs)
+                {
+                    Console.WriteLine(i.Key);
+                    foreach (var j in i.Value)
+                    {
+                        Console.WriteLine(j.Key + " , " + j.Value);
+                    }
+                }
+
+                return length.ToString();
             }
             catch (CustomException exception)
             {
