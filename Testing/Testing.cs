@@ -180,7 +180,7 @@ namespace Testing
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer(this.stateCodePath);
             Factory factory = new ObjectFactory();
-            ICSVBuilder csvStates = factory.GetObject("CSVStates", this.stateCodePath, this.delimiter, this.csvStateCodeHeader);
+            ICSVBuilder csvStates = factory.GetObject("CSVStateCensus", this.stateCodePath, this.delimiter, this.csvStateCodeHeader);
             GetCSVData getCSVData = new GetCSVData(csvStates.NumberOfRecords);
             string expected = getCSVData.Invoke();
             string actual = stateCensusAnalyzer.NumberOfRecords();
@@ -195,7 +195,7 @@ namespace Testing
         public void GivenStateCodeCSVFileIncorrect_WhenAnalyze_ReturnsCustomException()
         {
             Factory factory = new ObjectFactory();
-            ICSVBuilder csvStates = factory.GetObject("CSVStates", this.wrongStateCodeFileName, this.delimiter, this.csvStateCodeHeader);
+            ICSVBuilder csvStates = factory.GetObject("CSVStateCensus", this.wrongStateCodeFileName, this.delimiter, this.csvStateCodeHeader);
             GetCSVData getCSVData = new GetCSVData(csvStates.NumberOfRecords);
             string actual = getCSVData.Invoke();
             Assert.AreEqual("File Not Found!!!", actual);
@@ -209,7 +209,7 @@ namespace Testing
         public void GivenStateCodeCSVFileCorrectTypeIncorrect_WhenAnalyze_ReturnsCustomException()
         {
             Factory factory = new ObjectFactory();
-            ICSVBuilder csvStates = factory.GetObject("CSVStates", this.wrongStateCodeFileType, this.delimiter, this.csvStateCodeHeader);
+            ICSVBuilder csvStates = factory.GetObject("CSVStateCensus", this.wrongStateCodeFileType, this.delimiter, this.csvStateCodeHeader);
             Console.WriteLine("CSVStates: " + csvStates.NumberOfRecords());
             GetCSVData getCSVData = new GetCSVData(csvStates.NumberOfRecords);
             string actual = getCSVData.Invoke();
@@ -224,7 +224,7 @@ namespace Testing
         public void GivenStateCodeCSVFileCorrectDelimiterIncorrect_WhenAnalyze_ReturnsCustomException()
         {
             Factory factory = new ObjectFactory();
-            ICSVBuilder csvStates = factory.GetObject("CSVStates", this.stateCodePath, this.wrongDelimiter, this.csvStateCodeHeader);
+            ICSVBuilder csvStates = factory.GetObject("CSVStateCensus", this.stateCodePath, this.wrongDelimiter, this.csvStateCodeHeader);
             Console.WriteLine("CSVStates: " + csvStates.NumberOfRecords());
             GetCSVData getCSVData = new GetCSVData(csvStates.NumberOfRecords);
             string actual = getCSVData.Invoke();
@@ -239,7 +239,7 @@ namespace Testing
         public void GivenStateCodeCSVFileCorrectCSVHeaderIncorrect_WhenAnalyze_ReturnsCustomException()
         {
             Factory factory = new ObjectFactory();
-            ICSVBuilder csvStates = factory.GetObject("CSVStates", this.stateCodePath, this.delimiter, this.wrongCSVStateCodeHeader);
+            ICSVBuilder csvStates = factory.GetObject("CSVStateCensus", this.stateCodePath, this.delimiter, this.wrongCSVStateCodeHeader);
             Console.WriteLine("CSVStates: " + csvStates.NumberOfRecords());
             GetCSVData getCSVData = new GetCSVData(csvStates.NumberOfRecords);
             string actual = getCSVData.Invoke();

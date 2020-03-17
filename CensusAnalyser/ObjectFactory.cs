@@ -11,7 +11,7 @@ namespace CensusAnalyser
 
     /// <summary>
     /// Class for Object Creation
-    /// </summary>
+    /// </summary>           
     /// <seealso cref="CensusAnalyser.Factory" />
     public class ObjectFactory : Factory
     {
