@@ -306,5 +306,16 @@ namespace Testing
             int actual = stateCensusAnalyzer.SortingByInt(stateCensusDataPath, 1);
             Assert.AreEqual(406, actual);
         }
+
+        /// <summary>
+        /// Givens the state census data in json from most density to least when analyse return number of states sorted.
+        /// </summary>
+        [Test]
+        public void GivenStateCensusDataInJsonFromMostDensityToLeast_WhenAnalyse_ReturnNumberOfStatesSorted()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+            int actual = stateCensusAnalyzer.SortingByInt(stateCensusDataPath, 3);
+            Assert.AreEqual(294, actual);
+        }
     }
 }
