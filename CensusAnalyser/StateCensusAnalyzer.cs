@@ -108,7 +108,7 @@ namespace CensusAnalyser
                     {
                         while (data.Count != heading.Length)
                         {
-                            data.Add("Unknown");
+                            data.Add("0");
                         }
                     }
 
@@ -134,16 +134,27 @@ namespace CensusAnalyser
         /// <summary>
         /// Sorts the CSV file.
         /// </summary>
-        public void SortingCSVFile()
+        public void SortingCSVFile(string destination,string name, int key)
         {
             string[] lines = File.ReadAllLines(this.path);
             var data = lines.Skip(1);
-            IEnumerable<string> query =
-                from line in data
-                let x = line.Split(',')
-                orderby x[3]
-                select line;
-            File.WriteAllLines(@"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\SortedStateCode.csv", lines.Take(1).Concat(query.ToArray()));
+            IEnumerable<string> query = null;
+            if (name == "ascending")
+            {
+                query = from line in data
+                        let x = line.Split(',')
+                        orderby x[key]
+                        select line;
+            }
+
+            if (name == "descending") {
+                query = from line in data
+                        let x = line.Split(',')
+                        orderby x[key].ToInt32() descending 
+                        select line;
+            }
+
+            File.WriteAllLines(destination, lines.Take(1).Concat(query.ToArray()));
         }
 
         /// <summary>Checks for state.</summary>
@@ -167,6 +178,41 @@ namespace CensusAnalyser
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Sortings the by int.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        public int SortingByInt(string path, int key)
+        {
+            string[] temp;
+            string[] lines = File.ReadAllLines(path);
+            int[] record = new int[lines.Length];
+            int k = 0;
+            int value = 0;
+            foreach (var i in lines)
+            {
+                temp = i.Split(',');
+                record[k] = (int)temp[key].ToInt32();
+                k++;
+            }
+            for (var i = 1; i < lines.Length; i++)
+            {
+                for (var j = i + 1; j < lines.Length; j++)
+                {
+                    if (record[i] > (record[j]))
+                    {
+                        int t = record[i];
+                        record[i] = record[j];
+                        record[j] = t;
+                        value++;
+                    }
+                }
+            }
+            return value;
         }
     }
 }

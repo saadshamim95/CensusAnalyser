@@ -88,6 +88,8 @@ namespace Testing
         /// </summary>
         private readonly string jsonStateCodePath = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\SortedStateCode.json";
 
+        //private readonly string  = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csv";
+
         /// <summary>
         /// The Setup
         /// </summary>
@@ -292,6 +294,17 @@ namespace Testing
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
             string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCodePath, "Last", "StateName", "StateCode");
             Assert.AreEqual("West Bengal", actual);
+        }
+
+        /// <summary>
+        /// Givens the state census data in json from most populous to least when analyse return number of states sorted.
+        /// </summary>
+        [Test]
+        public void GivenStateCensusDataInJsonFromMostPopulousToLeast_WhenAnalyse_ReturnNumberOfStatesSorted()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+            int actual = stateCensusAnalyzer.SortingByInt(stateCensusDataPath, 1);
+            Assert.AreEqual(406, actual);
         }
     }
 }
