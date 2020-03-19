@@ -317,5 +317,16 @@ namespace Testing
             int actual = stateCensusAnalyzer.SortingByInt(stateCensusDataPath, 3);
             Assert.AreEqual(294, actual);
         }
+
+        /// <summary>
+        /// Givens the state census data in json from largest state to smallest when analyse return number of states sorted.
+        /// </summary>
+        [Test]
+        public void GivenStateCensusDataInJsonFromLargestStateToSmallest_WhenAnalyse_ReturnNumberOfStatesSorted()
+        {
+            StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
+            int actual = stateCensusAnalyzer.SortingByInt(stateCensusDataPath, 2);
+            Assert.AreEqual(336, actual);
+        }
     }
 }
