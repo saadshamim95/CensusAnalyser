@@ -281,7 +281,7 @@ namespace Testing
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();
             string actual = stateCensusAnalyzer.CheckForState(this.jsonStateCodePath, "First", "StateName", "StateCode");
-            Assert.AreEqual("Andhra Pradesh New", actual);
+            Assert.AreEqual("Andaman and Nicobar Islands", actual);
         }
 
         /// <summary>
@@ -289,6 +289,7 @@ namespace Testing
         /// </summary>
         //// Test Case 4.2
         [Test]
+
         public void GivenCSVStateCodeCheckEndState_WhenAnalyze_ShouldMatch()
         {
             StateCensusAnalyzer stateCensusAnalyzer = new StateCensusAnalyzer();

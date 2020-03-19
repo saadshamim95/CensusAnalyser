@@ -19,12 +19,42 @@ namespace CensusAnalyser
     /// <summary>
     /// Class StateCensusAnalyzer
     /// </summary>
-    public class StateCensusAnalyzer
+    public class StateCensusAnalyzer : IAdapter
     {
         /// <summary>
         /// The path
         /// </summary>
         private string path;
+
+        /// <summary>
+        /// The header
+        /// </summary>
+        private string header = "SrNo,StateName,TIN,StateCode,Population,AreaInSqKm,DensityPerSqKm";
+
+        /// <summary>
+        /// The path1
+        /// </summary>
+        private string path1 = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCensusData.csv";
+
+        /// <summary>
+        /// The path2
+        /// </summary>
+        private string path2 = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\StateCode.csv";
+
+        /// <summary>
+        /// The merge file
+        /// </summary>
+        private string merge_file = @"C:\Users\ye10398\source\repos\saadshamim95\Census Analyser\CensusAnalyser\Data\IndianCensusData.csv";
+
+        /// <summary>
+        /// The count
+        /// </summary>
+        private int count = 0;
+
+        /// <summary>
+        /// The line
+        /// </summary>
+        List<string> line = new List<string>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StateCensusAnalyzer"/> class.
@@ -213,6 +243,63 @@ namespace CensusAnalyser
                 }
             }
             return value;
+        }
+
+        /// <summary>
+        /// Combines the CSV file.
+        /// </summary>
+        public void CombineCsvFile()
+        {
+            //  string[] lines = File.ReadAllLines(path);
+            line.Add(header);
+            string[] csvFile2 = File.ReadAllLines(path2);
+            string[] csvFile1 = File.ReadAllLines(path1);
+            for (int i = 1; i < csvFile2.Length; i++)
+            {
+                count = 0;
+                string[] readCsvFile2 = csvFile2[i].Split(',');
+
+                for (int j = 1; j < csvFile1.Length; j++)
+                {
+                    string[] readCsvFile1 = csvFile1[j].Split(',');
+
+                    merge(csvFile2[i], csvFile1[j], readCsvFile1, readCsvFile2);
+                }
+
+                if (count == 0)
+                {
+                    // It adds new State that is not common
+                    // in both csv file;
+                    string add = String.Concat(csvFile2[i]);
+                    line.Add(add);
+                    //File.WriteAllLines(merge_file, line);
+                }
+
+                File.WriteAllLines(merge_file, line);
+            }
+            Console.WriteLine(" ");
+        }
+
+        /// <summary>
+        /// It will merge the two csv file
+        /// with state name
+        /// Merges the specified code.
+        /// </summary>
+        /// <param name="code">The code.</param>
+        /// <param name="census">The census.</param>
+        /// <param name="lines_code">The lines code.</param>
+        /// <param name="lines_census">The lines census.</param>
+        public void merge(string _code, string _census, string[] readStateCode, string[] readStateCensus)
+        {
+            if (readStateCode[0] == readStateCensus[1])
+            {
+                int indexCount = _census.IndexOf(",");
+                string StartIndex = _census.Substring(indexCount);
+                string concat = String.Concat(_code, StartIndex);
+                line.Add(concat);
+                count = 1;
+            }
+            //File.WriteAllLines(merge_file, line);
         }
     }
 }

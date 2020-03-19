@@ -13,8 +13,10 @@ namespace CensusAnalyser
     /// <summary>
     /// Class CSVStateCensus
     /// </summary>
-    public class CSVStateCensus : ICSVBuilder
+    public class CSVStateCensus : ICSVBuilder , IAdapter
     {
+        IAdapter data;
+
         /// <summary>
         /// The path
         /// </summary>
@@ -49,6 +51,17 @@ namespace CensusAnalyser
             this.delimiter = delimiter;
             this.csvHeader = header;
         }
+
+        public CSVStateCensus(IAdapter data)
+        {
+            this.data = data;
+        }
+
+        public int SortingByInt(string path, int key)
+        {
+           return data.SortingByInt(path, key);
+        }
+
 
         /// <summary>
         /// GetCSVData delegate
